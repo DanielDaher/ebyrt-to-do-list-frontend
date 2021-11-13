@@ -1,0 +1,23 @@
+.add-task-form {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 30px;
+}
+
+.add-task-form input {
+  background-color: rgba(84, 84, 84, 0.9);
+  color: white;
+  font-size: 20px;
+  padding: 10px;
+}
+
+.add-task-form input::placeholder {
+  color: rgba(255, 255, 255, 0.582);
+  text-align: center;
+}
+
+.add-task-form button {
+  background-color: rgba(84, 84, 84, 0.9);
+  color: white;
+  padding: 20px;
+}

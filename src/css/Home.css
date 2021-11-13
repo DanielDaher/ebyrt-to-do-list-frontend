@@ -1,0 +1,48 @@
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Lexend+Mega:wght@100;152;200&display=swap');
+.home-content {
+  display: flex;
+  width: 100vw;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.home-title{
+  font-family: 'Anton';
+  font-size: 164px;
+  font-weight: 400;
+  margin: 0;
+}
+
+
+.home-subtitle {
+  font-family: 'Lexend Mega';
+  font-weight: 200;
+  font-size: 30px;
+  margin: 0;
+}
+
+.home-title-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+@media screen and (max-width: 812px) {
+  .home-content {
+    flex-direction: column;
+  }
+
+  .home-title {
+    margin-top: 130px;
+    margin-left: 30px;
+    font-size: 50px;
+  }
+  
+  .home-title, .home-subtitle {
+    align-self: flex-start;
+  }
+
+  .home-subtitle {
+    margin-right: 50px;
+  }
+}
