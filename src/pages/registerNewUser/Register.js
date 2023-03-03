@@ -8,9 +8,11 @@ export default function Register() {
   const [userName, setUserName] = useState('');
   const [password, setPassword] = useState('');
   const [showNewUser, setShowNewUser] = useState('');
+  const [loading, setLoading] = useState(false);
   
   const createUser = async (event, { userName, password }) => {
     event.preventDefault();
+    setLoading(true);
     try {
       const url = `${process.env.REACT_APP_API_URL}/users` /* || 'http://localhost:3000/users/' */;
     
@@ -31,6 +33,7 @@ export default function Register() {
     } catch (error) {
       console.error(error);
     }
+    setLoading(false);
   };
 
   const renderSubmitButton = () => (
@@ -68,6 +71,7 @@ export default function Register() {
           Choose your password
           <input type="password" onChange={(e) => setPassword(e.target.value)}/>
         </label>
+        {loading && <p>Loading...</p>}
         {showRegisterButtonOrError()}
       </form>
     </div>

@@ -8,6 +8,7 @@ export default function LoginForm(props) {
   const [user, setUser] = useState('');
   const [password, setPassword] = useState('');
   const [showError, setShowError] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const saveTokenAndLocalStorage = (token) => {
     localStorage.setItem("toDoListToken", token);
@@ -46,7 +47,9 @@ export default function LoginForm(props) {
 
   const makeLogin = async (e) => {
     e.preventDefault();
+    setLoading(true);
     const APIresponse = await login(user, password);
+    setLoading(false);
     if (APIresponse.message) return setShowError(APIresponse.message);
 
     saveTokenAndLocalStorage(APIresponse.token);
@@ -63,6 +66,7 @@ export default function LoginForm(props) {
         Password
         <input type="password" onChange={(e) => setPassword(e.target.value)} />
       </label>
+      {loading && <p>Loading...</p>}
       {showError ? showLoginError() : renderizeSubmitButton()}
       <Link to="/register" className="login-form-redirect-link">
         <p>Not registered yet? Click here!</p>
