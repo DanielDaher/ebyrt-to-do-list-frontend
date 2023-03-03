@@ -31,7 +31,7 @@ export default function Tasks(props) {
         >
           Logout
       </button>
-      <FormAddTask getTasks={getAllTasks} />
+      <FormAddTask />
       <Filters/>
       <div className="boards-content">
         <div className="first-board">

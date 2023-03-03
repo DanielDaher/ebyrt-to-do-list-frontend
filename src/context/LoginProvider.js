@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import LoginContext from './LoginContext';
+import { fetchAllTasks, updateTask, createNewTask, removeTask } from "../helpers/api";
 require('dotenv').config();
 
 export default function LoginProvider(props) {
@@ -12,16 +13,7 @@ export default function LoginProvider(props) {
   const getAllTasks = async () => {
     console.log('getAllTasks');   
     try {
-      const url = `${process.env.REACT_APP_API_URL}/tasks`/*  || 'http://localhost:3000/tasks' */;
-    
-      const requisition = await fetch(url, {
-        method: "GET",
-        headers: new Headers({
-          'Authorization': token,
-          'Content-Type': 'application/json',
-        }),
-      });
-      const APIresponse = await requisition.json();
+      const APIresponse = await fetchAllTasks();
       setTasks(APIresponse);
     } catch (error) {
       console.error(error);
@@ -31,43 +23,17 @@ export default function LoginProvider(props) {
   const updateTaskById = async (status, { task, _id }) => {
     if (status === 'Change status') return null;
     try {
-      const url = `${process.env.REACT_APP_API_URL}/tasks/${_id}`/*  || `http://localhost:3000/tasks/${_id}` */;
-    
-      await fetch(url, {
-        method: "PUT",
-        headers: {
-          'Accept': 'application/json',
-          'Content-Type': 'application/json',
-          'Authorization': token
-        },
-        body: JSON.stringify({
-          task,
-          status,
-        }),
-      });
+      await updateTask(status, task, _id)
       await getAllTasks();
     } catch (error) {
       console.error(error);
     }
   };
 
-  const addTask = async ({ task, status }, getTasks) => {
+  const addTask = async ({ task, status }) => {
     try {
-      const url = `${process.env.REACT_APP_API_URL}/tasks`/*  || 'http://localhost:3000/tasks/' */;
-    
-      await fetch(url, {
-        method: "POST",
-        headers: {
-          'Accept': 'application/json',
-          'Content-Type': 'application/json',
-          'Authorization': token
-        },
-        body: JSON.stringify({
-          task,
-          status,
-        }),
-      });
-      await getTasks();
+      await createNewTask(task, status);
+      await getAllTasks();
     } catch (error) {
       console.error(error);
     }
@@ -75,16 +41,7 @@ export default function LoginProvider(props) {
 
   const removeTaskById = async ({ _id }) => {
     try {
-      const url = `${process.env.REACT_APP_API_URL}/tasks/${_id}`/*  || `http://localhost:3000/tasks/${_id}` */;
-    
-      await fetch(url, {
-        method: "DELETE",
-        headers: {
-          'Accept': 'application/json',
-          'Content-Type': 'application/json',
-          'Authorization': token
-        },
-      });
+      await removeTask(_id)
       await getAllTasks();
     } catch (error) {
       console.error(error);

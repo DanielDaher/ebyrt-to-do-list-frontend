@@ -2,8 +2,7 @@ import React, { useContext, useState } from 'react';
 import '../../../css/FormAddTask.css'; 
 import loginContext from '../../../context/LoginContext';
 
-export default function FormAddTask(props) {
-  const { getTasks } = props;
+export default function FormAddTask() {
   const [newTask, setNewTask] = useState('');
   const { addTask } = useContext(loginContext);
 
@@ -14,7 +13,7 @@ export default function FormAddTask(props) {
       status: 'Pending',
     };
 
-    addTask(infoTask, getTasks);
+    addTask(infoTask);
     setNewTask('');
   };
 
