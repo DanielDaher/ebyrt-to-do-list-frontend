@@ -4,8 +4,7 @@ const token = localStorage.getItem("toDoListToken") || null;
 
 export const login = async (user, password) => {
   const url = `${API_BASE_URL}/login`;
-  console.log('API BASE URL: ', API_BASE_URL)
-  console.log('url: ', url)
+  
   const requisition = await fetch(url, {
     method: "POST",
     body: JSON.stringify({

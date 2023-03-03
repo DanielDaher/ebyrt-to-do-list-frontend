@@ -16,7 +16,6 @@ export default function Tasks(props) {
   };
 
   useEffect(() => {
-    console.log('useEffect');
     getTasksFromAPI();
   }, []);
 
