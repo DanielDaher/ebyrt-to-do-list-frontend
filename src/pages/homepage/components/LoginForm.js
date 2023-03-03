@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { login } from "../../../helpers/api";
 import '../../../css/LoginForm.css';
 require('dotenv').config();
 
@@ -47,18 +48,7 @@ export default function LoginForm(props) {
   const makeLogin = async (e) => {
     e.preventDefault();
     setLoading(true);
-    const url = `${process.env.REACT_APP_API_URL}/login` /* || 'http://localhost:3000/login' */;
-    console.log(url);
-
-    const requisition = await fetch(url, {
-      method: "POST",
-      body: JSON.stringify({
-        userName: user,
-        password,
-      }),
-    });
-
-    const APIresponse = await requisition.json();
+    const APIresponse = await login(user, password);
     setLoading(false);
     if (APIresponse.message) return setShowError(APIresponse.message);
 
