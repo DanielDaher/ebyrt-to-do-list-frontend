@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useRef } from 'react';
+import { useHistory } from 'react-router-dom';
 import loginContext from '../../context/LoginContext';
 import '../../css/Tasks.css'; 
 import Filters from './components/Filters';
@@ -8,6 +9,7 @@ import RenderTask from './components/RenderTask';
 export default function Tasks(props) {
   const { getAllTasks } = useContext(loginContext);
   const fetchTasks = useRef(getAllTasks);
+  const history = useHistory();
 
   const getTasksFromAPI = async () => {
     await fetchTasks.current();
@@ -19,7 +21,8 @@ export default function Tasks(props) {
   }, []);
 
   const deleteTokenFromLocalStorageAndRedirect = () => {
-    window.location.href = window.origin;
+    // window.location.href = window.origin;
+    history.push('/');
     localStorage.removeItem('toDoListToken');
   };
 

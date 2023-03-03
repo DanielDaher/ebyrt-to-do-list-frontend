@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import { login } from "../../../helpers/api";
 import '../../../css/LoginForm.css';
 require('dotenv').config();
@@ -9,6 +9,7 @@ export default function LoginForm(props) {
   const [password, setPassword] = useState('');
   const [showError, setShowError] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   const saveTokenAndLocalStorage = (token) => {
     localStorage.setItem("toDoListToken", token);
@@ -42,7 +43,9 @@ export default function LoginForm(props) {
   const redirectToTasks = () => {
     setUser('');
     setPassword('');
-    window.location.href = `${window.origin}/tasks`;
+    setIsLoggedIn(true);
+    // window.location.href = `${window.origin}/tasks`;
+    // return <Navigate to="/" />;
   };
 
   const makeLogin = async (e) => {
@@ -55,6 +58,8 @@ export default function LoginForm(props) {
     saveTokenAndLocalStorage(APIresponse.token);
     redirectToTasks();
   };
+
+  if (isLoggedIn) return <Redirect to="/tasks" />;
 
   return (
     <form className="login-form" onSubmit={(e) => makeLogin(e)}>
