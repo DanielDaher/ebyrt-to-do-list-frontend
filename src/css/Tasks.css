@@ -5,7 +5,7 @@
   width: 100vw;
 }
 
-.first-board, .second-board, .third-board {
+.board {
   background-color: rgba(84, 84, 84, 0.8);
   border-radius: 25px;
   display: flex;
@@ -14,10 +14,13 @@
   margin: 50px;
   width: 700px;
   height: 550px;
+}
+
+.tasks-box {
   overflow: auto;
 }
 
-.tasks-content {
+.tasks-page-content {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -25,7 +28,12 @@
   height: 100vh;
 }
 
-.tasks-content h3 {
+.title-box {
+  width: 100%;
+  height: 70px;
+}
+
+.title-box h3 {
   margin-top: 20px;
 }
 
@@ -148,7 +156,7 @@
 }
 
 @media screen and (max-width: 812px) {
-  .tasks-content {
+  .tasks-page-content {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -166,9 +174,12 @@
     align-items: center;
   }
 
-  .first-board, .second-board, .third-board {
+  .board {
     width: 80vw;
     min-height: 270px;
+  }
+
+  .tasks-box {
     overflow: scroll;
   }
 
