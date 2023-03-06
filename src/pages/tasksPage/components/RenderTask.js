@@ -37,6 +37,7 @@ export default function RenderTask(props) {
         />
         <button
           type="button"
+          className='ok-button'
           onClick={() => sendNewTaskToUpdate(task)}
           >
             OK
