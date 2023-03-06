@@ -82,6 +82,10 @@
   border-radius: 5px;
 }
 
+.each-task select:hover {
+  border: 1px solid white;
+}
+
 .each-task input {
   border-radius: 25px;
   min-width: 90%;
@@ -104,6 +108,14 @@
   border-radius: 25px;
   color: rgb(209, 157, 14);
   margin-bottom: 5px;
+}
+
+.edit-button:hover, .remove-button:hover, .ok-button:hover {
+  border: 1px solid white;
+}
+
+.edit-button:active, .remove-button:active, .ok-button:active {
+  background-color: silver;
 }
 
 .logout-button {
