@@ -17,6 +17,29 @@ export const login = async (user, password) => {
   return APIresponse;
 };
 
+export const registerNewUser = async (userName, password) => {
+  try {
+    const url = `${API_BASE_URL}/users`;
+    
+      const registerUser = await fetch(url, {
+        method: "POST",
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+          'Authorization': token
+        },
+        body: JSON.stringify({
+          userName,
+          password,
+        }),
+      });
+      const registerInfo = await registerUser.json();
+      return registerInfo;
+  } catch (error) {
+    console.error(error);
+  }
+}; 
+
 export const fetchAllTasks = async () => {
   try {
     const url = `${API_BASE_URL}/tasks`;

@@ -1,10 +1,10 @@
-import React, { useContext, useState } from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import loginContext from '../../context/LoginContext';
+import { registerNewUser } from "../../helpers/api";
+
 require('dotenv').config();
 
 export default function Register() {
-  const { token } = useContext(loginContext);
   const [userName, setUserName] = useState('');
   const [password, setPassword] = useState('');
   const [showNewUser, setShowNewUser] = useState('');
@@ -14,21 +14,7 @@ export default function Register() {
     event.preventDefault();
     setLoading(true);
     try {
-      const url = `${process.env.REACT_APP_API_URL}/users` /* || 'http://localhost:3000/users/' */;
-    
-      const registerUser = await fetch(url, {
-        method: "POST",
-        headers: {
-          'Accept': 'application/json',
-          'Content-Type': 'application/json',
-          'Authorization': token
-        },
-        body: JSON.stringify({
-          userName,
-          password,
-        }),
-      });
-      const registerInfo = await registerUser.json();
+      const registerInfo = await registerNewUser(userName, password);
       setShowNewUser(registerInfo); 
     } catch (error) {
       console.error(error);
