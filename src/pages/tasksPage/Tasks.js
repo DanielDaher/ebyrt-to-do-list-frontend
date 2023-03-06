@@ -25,8 +25,26 @@ export default function Tasks(props) {
     localStorage.removeItem('toDoListToken');
   };
 
+  const GetBoardsContent = () => {
+    const boardTitles = ['Pending', 'In Progress', 'Concluded'];
+    return (
+      <div className="boards-content">
+        {boardTitles.map((title, index) => (
+          <div className='board' key={index}>
+            <div className='title-box'>
+              <h3>{title}</h3>
+            </div>
+            <div className='tasks-box'>
+              <RenderTask taskStatus={title}/>
+            </div>
+          </div>
+        ))}
+      </div>
+    );
+  };
+
   return (
-    <div className="tasks-content">
+    <div className="tasks-page-content">
       <button
         className="logout-button"
         onClick={() => deleteTokenFromLocalStorageAndRedirect()}
@@ -35,20 +53,7 @@ export default function Tasks(props) {
       </button>
       <FormAddTask />
       <Filters/>
-      <div className="boards-content">
-        <div className="first-board">
-          <h3>Pending</h3>
-          <RenderTask taskStatus='Pending'/>
-        </div>
-        <div className="second-board">
-          <h3>In progress</h3>
-          <RenderTask taskStatus='In Progress'/>
-        </div>
-        <div className="third-board">
-          <h3>Concluded</h3>
-          <RenderTask taskStatus='Concluded'/>
-        </div>
-      </div>
+      <GetBoardsContent />
     </div>
   );
 };
