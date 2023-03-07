@@ -1,70 +1,59 @@
-# Getting Started with Create React App
+# ebyrt-to-do-list
+Boas vindas ao To Do List da empresa Ebyrt, onde você pode adicionar tarefas e classificá-las para organizar seu dia-a-dia.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Observações:
 
-## Available Scripts
+Este é o repositório do frontend da aplicação. Para acessar o do **backend**, clique [neste link] (https://github.com/DanielDaher/ebyrt-to-do-list-backend)
 
-In the project directory, you can run:
+## Objetivos:
 
-### `npm start`
+O objetivo do projeto é facilitar a organização dos afazeres de todas as pessoas colaboradoras da empresa Ebyrt.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Para acessar o link da aplicação:
+[ebyrt-to-do-list] (https://ebyrt-to-do-list-danieldaher.vercel.app/)
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Como rodar a aplicação no computador:
 
-### `npm test`
+#### Seu computador precisa de Git (para versionamento do código), Node.js & npm (para executar a aplicação) e MongoDB (que será nosso banco de dados). Clique nos links, caso ainda não tenha instalado algum desses:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+ - [ ] [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
+ - [ ] [Node.js e npm](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm)
+ - [ ] [MongoDB](https://docs.mongodb.com/manual/installation/)
 
-### `npm run build`
+- O **MongoDB** precisa estar ativo para que a aplicação funcione. Digite o seguinte comando no terminal, para verificar isso:
+`sudo service mongod status`.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+  Caso a propriedade **Active** não esteja como *Active(running)* digite no terminal `sudo service mongod start`. Talvez o sistema te peça sua senha de usuário. Basta digitar, sabendo que os caracteres de senha não aparecem no terminal.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Agora sim estamos prontos para instalar o projeto.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Instalando a aplicação:
 
-### `npm run eject`
+1. Primeiro, abra um novo terminal e clone o repositório do frontend utilizando o comando 
+`git clone git@github.com:DanielDaher/ebyrt-to-do-list-frontend.git`
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+2. Clone também o repositório do backend utilizando o comando
+`git clone git@github.com:DanielDaher/ebyrt-to-do-list-backend.git`
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+3. Em seguida, digite `cd ebyrt-to-do-list-backend` para entrar no diretório (pasta) do projeto, que acabou de ser criada. É preciso executar o comando `npm install` para instalar as dependências necessárias.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+4. Com o comando `npm run dev`, o backend da aplicação já estará funcionando. Aguarde alguns segundos, que o terminal mostrará a mensagem "App listening on PORT 3000", o que significa que está tudo certo. Lembrando que, para executar este passo é necessário que seu **MongoDB** esteja ativo.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+5. Abra outro terminal (para não interromper o backend, que deve continuar rodando) e acesse a pasta do projeto novamente.
 
-## Learn More
+6. Agora, ao invés de entrar na pasta do backend, vamos para o frontend com `cd ebyrt-to-do-list-frontend`.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+7. Instale mais dependências com `npm install`
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+8. Ao término da etapa anterior, rode no terminal `npm start`. Isto pode demorar alguns minutos, aguarde até que o terminal te pergunte se deseja abrir a porta **3001**, pois a 3000 já está executando o backend. Basta teclar **y** ou **yes** e apertar enter. Em alguns instantes seu navegador principal abrirá a aplicação com um link local. 
 
-### Code Splitting
+9. E agora é só desfrutar do site!
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
 
-### Analyzing the Bundle Size
+## Funcionalidades da aplicação
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+A aplicação está em inglês, mas basta pedir para que o navegador traduza que continuará funcionando perfeitamente.
 
-### Making a Progressive Web App
+A primeira tela é um formulário para fazer login, ou ir para a página de cadastro. Basta escolher um nome de usuário (não precisa ser um email) e uma senha minimamente segura. Após o cadastro, volte para a página inicial.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Feito o login, a aplicação entra em uma página de tarefas, onde é possível criar novas tarefas, editá-las, classificá-las por status e removê-las.
