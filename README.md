@@ -3,7 +3,7 @@ Boas vindas ao To Do List da empresa Ebyrt, onde você pode adicionar tarefas e 
 
 ## Observações:
 
-Este é o repositório do frontend da aplicação. Para acessar o do **backend**, clique [neste link] (https://github.com/DanielDaher/ebyrt-to-do-list-backend)
+Este é o repositório do frontend da aplicação. Para acessar o do **backend**, clique neste link: https://github.com/DanielDaher/ebyrt-to-do-list-backend
 
 ## Objetivos:
 
