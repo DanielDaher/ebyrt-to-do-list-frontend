@@ -43,11 +43,12 @@ export const registerNewUser = async (userName, password) => {
 export const fetchAllTasks = async () => {
   try {
     const url = `${API_BASE_URL}/tasks`;
+    const getToken = localStorage.getItem("toDoListToken") || null;
   
     const requisition = await fetch(url, {
       method: "GET",
       headers: new Headers({
-        'Authorization': token,
+        'Authorization': getToken,
         'Content-Type': 'application/json',
       }),
     });
