@@ -1,6 +1,7 @@
 import React, { useContext, useState } from 'react';
 import '../../../css/FormAddTask.css'; 
 import loginContext from '../../../context/LoginContext';
+import { FaPlus } from "react-icons/fa";
 
 export default function FormAddTask() {
   const [newTask, setNewTask] = useState('');
@@ -25,7 +26,7 @@ export default function FormAddTask() {
         value={newTask}
         onChange={(e) => setNewTask(e.target.value)}
       />
-      <button type="submit" onClick={(e) => addNewTask(e)}>+</button>
+      <button type="submit" onClick={(e) => addNewTask(e)}>{ <FaPlus /> }</button>
     </form>
   );
 };
