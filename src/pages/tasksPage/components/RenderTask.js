@@ -1,10 +1,22 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import loginContext from '../../../context/LoginContext';
 
 export default function RenderTask(props) {
   const { taskStatus } = props;
   const [newTask, setNewTask] = useState('');
   const { tasks, alphabeticalTasks, sortTasksByName, tasksByDate, sortTasksByDate, renderButtonsOptions, renderSelectAndOptions, editTask, setEditTask, updateTaskById } = useContext(loginContext);
+
+  useEffect(() => {
+    if (tasks === 'this user has no tasks yet!') return;
+
+    const getCurrentTask = () => {
+      return tasks.find((task) => task._id === editTask);
+    }
+    const currentTask = getCurrentTask();
+
+    if (!currentTask) return;
+    saveNewTaskOnState(currentTask.task);
+  }, [tasks, editTask])
 
   if (tasks === 'this user has no tasks yet!') return null;
 
@@ -32,7 +44,7 @@ export default function RenderTask(props) {
       <div key={task._id} className="each-task">
         <input
           type="text"
-          placeholder={`${task.task}`}
+          value={newTask}
           onChange={(e) => saveNewTaskOnState(e.target.value)}
         />
         <button
