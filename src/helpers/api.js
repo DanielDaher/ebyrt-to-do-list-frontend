@@ -1,6 +1,6 @@
 require('dotenv').config();
 const API_BASE_URL = `${process.env.REACT_APP_API_URL}` /* || 'http://localhost:3001' */;
-const token = localStorage.getItem("toDoListToken") || null;
+const getToken = () => localStorage.getItem("toDoListToken") || null;
 
 export const login = async (user, password) => {
   const url = `${API_BASE_URL}/login`;
@@ -20,6 +20,7 @@ export const login = async (user, password) => {
 export const registerNewUser = async (userName, password) => {
   try {
     const url = `${API_BASE_URL}/users`;
+    const token = getToken();
     
       const registerUser = await fetch(url, {
         method: "POST",
@@ -43,12 +44,12 @@ export const registerNewUser = async (userName, password) => {
 export const fetchAllTasks = async () => {
   try {
     const url = `${API_BASE_URL}/tasks`;
-    const getToken = localStorage.getItem("toDoListToken") || null;
+    const token = getToken();
   
     const requisition = await fetch(url, {
       method: "GET",
       headers: new Headers({
-        'Authorization': getToken,
+        'Authorization': token,
         'Content-Type': 'application/json',
       }),
     });
@@ -62,6 +63,7 @@ export const fetchAllTasks = async () => {
 export const updateTask = async (status, task, _id) => {
   try {
     const url = `${API_BASE_URL}/tasks/${_id}`;
+    const token = getToken();
   
     await fetch(url, {
       method: "PUT",
@@ -83,6 +85,7 @@ export const updateTask = async (status, task, _id) => {
 export const createNewTask = async (task, status) => {
   try {
     const url = `${API_BASE_URL}/tasks`;
+    const token = getToken();
     await fetch(url, {
       method: "POST",
       headers: {
@@ -103,6 +106,7 @@ export const createNewTask = async (task, status) => {
 export const removeTask = async (_id) => {
   try {
     const url = `${API_BASE_URL}/tasks/${_id}`;
+    const token = getToken();
     await fetch(url, {
       method: "DELETE",
       headers: {
