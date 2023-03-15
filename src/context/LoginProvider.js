@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import LoginContext from './LoginContext';
 import { fetchAllTasks, updateTask, createNewTask, removeTask } from "../helpers/api";
+import Swal from 'sweetalert2'
 require('dotenv').config();
 
 export default function LoginProvider(props) {
@@ -39,6 +40,21 @@ export default function LoginProvider(props) {
     }
   };
 
+  const confirmRemoveTask = (task) => {
+    return Swal.fire({
+      title: 'Do you want to delete this task?',
+      showDenyButton: false,
+      showCancelButton: true,
+      confirmButtonText: 'Delete',
+      denyButtonText: `Don't save`,
+    }).then((result) => {
+      if (result.isConfirmed) {
+        removeTaskById(task)
+        Swal.fire('Saved!', '', 'success')
+      }
+    })
+  }
+  
   const removeTaskById = async ({ _id }) => {
     try {
       await removeTask(_id)
@@ -61,7 +77,7 @@ export default function LoginProvider(props) {
         <button
         type="button"
         className="remove-button"
-        onClick={() => removeTaskById(task)}
+        onClick={() => confirmRemoveTask(task)}
         >
           X
         </button>
