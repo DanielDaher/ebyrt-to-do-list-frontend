@@ -11,13 +11,29 @@ export default function LoginProvider(props) {
   const [tasksByDate, setTasksByDate] = useState(false);
   const [tasks, setTasks] = useState([]);
 
+  const redirectToLogin = () => {
+    return Swal.fire({
+      title: 'Your session has expired.',
+      showDenyButton: false,
+      showCancelButton: false,
+      confirmButtonText: 'Ok',
+      denyButtonText: `Don't save`,
+    }).then((result) => {
+      if (result.isConfirmed) {
+        window.location.href = window.origin;
+      }
+    })
+  }
+
   const getAllTasks = async () => {
     console.log('getAllTasks');   
     try {
-      const APIresponse = await fetchAllTasks();
+      const { status, APIresponse } = await fetchAllTasks();
+      if (status !== 200) return redirectToLogin();
       setTasks(APIresponse);
     } catch (error) {
       console.error(error);
+      redirectToLogin();
     }
   };
 

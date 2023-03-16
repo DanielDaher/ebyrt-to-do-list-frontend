@@ -16,8 +16,9 @@ export default function Tasks(props) {
   };
 
   useEffect(() => {
+    if (!localStorage.getItem('toDoListToken')) return history.push('/')
     getTasksFromAPI();
-  }, []);
+  }, [history]);
 
   const deleteTokenFromLocalStorageAndRedirect = () => {
     // window.location.href = window.origin;
