@@ -54,7 +54,7 @@ export const fetchAllTasks = async () => {
       }),
     });
     const APIresponse = await requisition.json();
-    return APIresponse;
+    return { status: requisition.status, APIresponse };
   } catch (error) {
     console.error(error);
   }
